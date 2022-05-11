@@ -35,7 +35,7 @@ header {
      */
     margin-left: -7px;
     font-size: 96px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* Everything below the header */
@@ -49,6 +49,7 @@ main {
 /* Navigation sidebar */
 aside {
     padding-right: 50px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
 }
