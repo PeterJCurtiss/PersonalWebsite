@@ -63,7 +63,9 @@ img {
 p {
     margin-top: 0;
 }
-
+.text{
+    max-width: 600px;
+}
 /********************************
  * STYLES SPECIFIC FOR THE DETAILED CAROUSEL VIEW
  ********************************/
