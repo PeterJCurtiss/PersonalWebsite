@@ -1,0 +1,184 @@
+/********************************
+ * STYLES THAT APPLY TO EVERY PAGE
+ ********************************/
+body {
+    min-width: 400px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(246, 246, 246);
+}
+
+/* There are three link styles:
+    - Normal
+    - When hovering the mouse over them
+    - The currently selected page
+*/
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: palevioletred;
+}
+
+a.selected {
+    color: red;
+}
+
+/* The header is the name at the top of the page */
+header {
+    /*
+     *  This negative margin moves the header to the left.
+     *  Adjust this to line up the header font with the nav menu.
+     */
+    margin-left: -7px;
+    font-size: 96px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Everything below the header */
+main {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    flex-grow: 1;
+    display: flex;
+}
+
+/* Navigation sidebar */
+aside {
+    padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    object-fit: cover;
+    height: 250px;
+    width: 250px;
+}
+
+/* Removes defailt upper margins from paragraphs for nice looking alignment */
+p {
+    margin-top: 0;
+}
+
+/********************************
+ * STYLES SPECIFIC FOR THE DETAILED CAROUSEL VIEW
+ ********************************/
+
+/* The carousel view has class="carousel", which separates these styles from the default ones.
+This means the following styles use syntax which is more complex. */
+.carousel {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+/* This means "apply these styles to the 'main' class inside the 'carousel' class" */
+.carousel .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Likewise, these are applied to any 'img' tags inside a 'main' class inside a 'carousel' class */
+.carousel .main img {
+    height: 600px;
+    width: 600px;
+    object-fit: cover;
+}
+
+/* And buttons, and so on...  */
+.carousel .main button {
+    border: 0;
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+}
+
+/* Apply to buttons inside a 'carousel' class, but only ones with the 'left' class */
+.carousel button.left {
+    border-radius: 50% 0 0 50%;
+}
+
+/* ...and only ones with the 'right' class */
+.carousel button.right {
+    border-radius: 0 50% 50% 0;
+}
+
+/* The nav bar inside the carousel class is used for the small carousel images */
+.carousel nav {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel nav img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Give the small carousel images some polish styling:
+- Lower the opacity on hover
+- Give a border / lower opacity to the currently selected one */
+.carousel nav img:hover {
+    opacity: .8;
+}
+
+.carousel nav img:target {
+    opacity: .6;
+    border-bottom: 4px solid red;
+}
+
+/********************************
+ * STYLES SPECIFIC FOR SMALL (MOBILE) SCREENS
+ ********************************/
+
+/* These styles will overwrite the normal ones on small screens (width < 600px) */
+@media screen and (max-width: 940px) {
+    body {
+        padding: 0;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    aside {
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 8px;
+        padding: 0;
+    }
+
+    aside a {
+        padding: 10px;
+        border-left: 1px solid red;
+    }
+
+    aside a:first-child {
+        border-left: none;
+    }
+
+    .gallary {
+        text-align: center;
+    }
+
+    .carousel .main img {
+        width: auto;
+        height: auto;
+    }
+
+    .carousel nav {
+        overflow-x: auto;
+        width: calc(100% - 100px);
+        margin: auto;
+    }
+}

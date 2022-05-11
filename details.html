@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- You can ignore these tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet" type="text/css">
+        
+        <!-- OK, you can stop ignoring stuff now. -->
+        <title>PJ Curtiss</title>
+    </head>
+    <body>
+        <header>PJ Curtiss</header>
+        <main>
+            <!-- Navigation links -->
+            <aside>
+                <a class="selected" href="./">portfolio</a>
+                <a href="./resume.pdf" target="_blank">resume</a>
+                <a href="./about">about</a>
+                <a href="./contact">contact</a>
+            </aside>
+            <div class="carousel">
+                <!-- Main area -->
+                <div class="main">
+                    <a class="left"><button class="left">&lt;</button></a>
+                    <img src="images/hades.jpg" class="carousel-main">
+                    <a class="right"><button class="right">&gt;</button></a>
+                </div>
+
+                <!-- Lower photo select bar -->
+                <nav>
+                    <!--
+                        To add a new item:
+                        1. Make a new line with the image link
+                        2. Update the href AND id numbers to be sequential
+                        3. Edit index.html to match
+                    -->
+                    <a href="#1"><img id="1" src="images/boats.JPG"></a>
+                    <a href="#2"><img id="2" src="images/cat.jpg"></a>
+                    <a href="#3"><img id="3" src="images/lake.JPG"></a>
+                    <a href="#4"><img id="4" src="images/rocks.jpg"></a>
+                    <a href="#5"><img id="5" src="images/shrooms.jpg"></a>
+                    <a href="#6"><img id="6" src="images/table.jpg"></a>
+                </nav>
+            </div>
+        </main>
+        <script>
+            // This function will be called every time the main image is updated
+            function update_carousel() {
+                // Get the image number from the URL
+                let image_id = window.location.hash.slice(1) || 1;
+
+                // Get the thumbnail image corrosponding to that number
+                let thumbnail_image = document.getElementById(image_id);
+
+                // Update the main image to be the selected thumbnail image
+                let main_image = document.querySelector('.carousel-main');
+                main_image.src = thumbnail_image.src;
+    
+                // Update left/right links to point to the next image (if applicable)
+                if (Number(image_id) > 1) {
+                    document.querySelector('a.left').href = `#${Number(image_id) - 1}`;
+                }
+                if (Number(image_id) < document.querySelectorAll('nav img').length) {
+                    document.querySelector('a.right').href = `#${Number(image_id) + 1}`;
+                }
+
+            }
+                            
+            // Tell it to re-update the carousel if the page hash changes
+            addEventListener('hashchange', update_carousel);
+
+            // Map the left and right arrow keys to the left and right carousel buttons
+            addEventListener('keydown', (event) => {
+                if (event.key == 'ArrowLeft') {
+                    document.querySelector('a.left').click();
+                }
+                else if (event.key == 'ArrowRight') {
+                    document.querySelector('a.right').click();
+                }
+            })
+
+            // Inital update of the carousel when the page is first loaded
+            update_carousel();
+        </script>
+    </body>
+</html>
