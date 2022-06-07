@@ -19,7 +19,7 @@ a {
     color: black;
 }
 
-a:hover {
+aside a:hover {
     color: palevioletred;
 }
 
@@ -54,10 +54,16 @@ aside {
     flex-direction: column;
 }
 
-img {
+.gallary img {
     object-fit: cover;
     height: 250px;
     width: 250px;
+}
+
+.headshot img {
+    object-fit: cover;
+    height: 300px;
+    width: auto;
 }
 
 /* Removes defailt upper margins from paragraphs for nice looking alignment */
@@ -184,4 +190,8 @@ This means the following styles use syntax which is more complex. */
         width: calc(100% - 100px);
         margin: auto;
     }
+}
+
+.vertical{
+    flex-direction: column;
 }
